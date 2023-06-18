@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { Space, Card, Input, Button, Alert, Checkbox } from "antd";
 // import { useLazyQuery, gql, ApolloClient } from "@apollo/client";
-import { validation } from "./services/user.service";
+import { validation } from "../services/user.service";
 
 const Login = (props) => {
   const [userName, setUserName] = useState("");
@@ -53,8 +53,7 @@ const Login = (props) => {
           expire.toUTCString();
 
         const prevLocation = window.history;
-        // prevLocation ? router.push(prevLocation) : router.push("/Cartable");
-        router.push("/Cartable");
+        prevLocation ? router.push(prevLocation) : router.push("/Cartable");
       } else setErrMsg("نام کاربری یا رمز عبور اشتباه می باشد");
     });
 
