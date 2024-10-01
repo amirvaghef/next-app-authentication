@@ -2,9 +2,9 @@ import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import {} from "dotenv/config";
 import jwt from "jsonwebtoken";
-import models from "../../../db/models/index.js";
-import graphQLConfig from "../../../db/graphQL/index.js";
-import db from "../../../db/mongoDB.js";
+import models from "../_db/models/index.js";
+import graphQLConfig from "../_db/graphQL/index.js";
+import db from "../_db/mongoDB.js";
 
 const getUser = (token) => {
   if (token) {

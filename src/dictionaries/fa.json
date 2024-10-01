@@ -1,0 +1,40 @@
+{
+  "layout": {
+    "header": "اعتبارسنجی",
+    "register": "ثبت کاربر",
+    "login": "ورود",
+    "language": "زبان",
+    "farsi": "فارسی",
+    "english": "انگلیسی",
+    "cartable": "کارتابل",
+    "logout": "خروج"
+  },
+  "login": {
+    "header": "ورود کاربر",
+    "username": "نام کاربری",
+    "password": "رمز عبور",
+    "rememberme": "مرا به خاطر بسپار",
+    "submit": "ورود",
+
+    "error": {
+      "wronguserpass": "نام کاربری یا رمز عبور اشتباه می باشد"
+    }
+  },
+  "register": {
+    "header": "ثبت کاربر",
+    "username": "نام کاربری",
+    "password": "رمز عبور",
+    "repassword": "تکرار رمز عبور",
+    "name": "نام",
+    "family": "نام خانوادگی",
+    "email": "ایمیل",
+    "submit": "ثبت",
+
+    "message": {
+      "success": "ثبت نام با موفقیت انجام شد"
+    },
+    "error": {
+      "passrepassnotequal": "رمز عبور و تکرار آن برابر نمی باشد"
+    }
+  }
+}

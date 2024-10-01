@@ -1,0 +1,40 @@
+{
+  "layout": {
+    "header": "Authentication",
+    "register": "register",
+    "login": "login",
+    "language": "Language",
+    "farsi": "Farsi",
+    "english": "English",
+    "cartable": "Cartable",
+    "logout": "Logout"
+  },
+  "login": {
+    "header": "Login",
+    "username": "username",
+    "password": "password",
+    "rememberme": "remember me",
+    "submit": "login",
+
+    "error": {
+      "wronguserpass": "username or password is wrong"
+    }
+  },
+  "register": {
+    "header": "Register",
+    "username": "username",
+    "password": "password",
+    "repassword": "repeat password",
+    "name": "name",
+    "family": "family",
+    "email": "email",
+    "submit": "register",
+
+    "message": {
+      "success": "Registeration was successful"
+    },
+    "error": {
+      "passrepassnotequal": "your password and repeat of it aren't equal"
+    }
+  }
+}
