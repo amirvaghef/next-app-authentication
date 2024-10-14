@@ -7,6 +7,7 @@ input UserInput {
     family: String
     email: String!
     role: RoleInput
+    isLogin: Boolean
 }
 
 type User { 
@@ -17,6 +18,7 @@ type User {
     family: String
     email: String!
     role: Role
+    isLogin: Boolean
 }`;
 
 export default userTypeDef;

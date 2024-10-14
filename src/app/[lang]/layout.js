@@ -1,9 +1,11 @@
 import dynamic from "next/dynamic";
-import { getDictionary } from "../../dictionaries";
+import { getDictionary } from "@/dictionaries";
 import { AppProvider } from "./app-provider";
 import "./globals.css";
 
-const Navbar = dynamic(() => import("../components/navbar.js"), { ssr: false });
+const Navbar = dynamic(() => import("../../components/navbar.js"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: "Authentication",

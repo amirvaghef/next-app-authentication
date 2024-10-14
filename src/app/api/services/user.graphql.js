@@ -6,6 +6,12 @@ export const VALIDATE_USER = gql`
   }
 `;
 
+export const LOGOFF = gql`
+  mutation Logoff($UserName: String!) {
+    logoff(userName: $UserName)
+  }
+`;
+
 export const REGISTER_USER = gql`
   mutation NewUser($user: UserInput!) {
     newUser(user: $user) {

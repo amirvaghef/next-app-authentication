@@ -1,4 +1,9 @@
 {
+  "common": {
+    "error": {
+      "problem": "You face a problem, Please call administrator"
+    }
+  },
   "layout": {
     "header": "Authentication",
     "register": "register",

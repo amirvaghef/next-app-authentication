@@ -38,11 +38,23 @@ export const config = {
 export function middleware(request) {
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
+  let user = request.cookies.get("userName")?.value;
+
+  //redirect to login page
+  let dashboard = locales.find(
+    (locale) =>
+      pathname.startsWith(`/${locale}/dashboard/`) ||
+      pathname.startsWith(`/dashboard/`)
+  );
+  if (!user && dashboard)
+    return NextResponse.redirect(
+      new URL(`/login?path=${pathname}`, request.url)
+    );
+  // else if(user && dashboard)
+  //   checkAuthorization();
 
   let locale = locales.find(
-    (locale) =>
-      request.nextUrl.pathname.startsWith(`/${locale}/`) ||
-      request.nextUrl.pathname === `/${locale}`
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
   if (locale) {
     let response = NextResponse.next();

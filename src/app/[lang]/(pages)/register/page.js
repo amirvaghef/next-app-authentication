@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 // import { gql, useMutation } from "@apollo/client";
-import { register } from "@/app/services/user.service";
-import { useDictionary } from "@/app/hooks";
+import { register } from "@/app/api/services/user.service";
+import { useDictionary } from "@/hooks";
 
 const Register = (props) => {
   //   const { getFieldDecorator } = props.form;

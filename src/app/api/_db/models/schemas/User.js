@@ -9,6 +9,7 @@ const userSchema = Schema(
     family: { type: String },
     email: { type: String, required: true, index: { unique: true } },
     role: { type: Schema.Types.ObjectId },
+    isLogin: { type: Boolean, default: false },
   },
   { timestamp: true }
 );

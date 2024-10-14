@@ -7,7 +7,7 @@ const userQuery = {
     return await contextValue.User.find();
   },
   user: async (parent, args, { models: contextValue }) => {
-    return await contextValue.User.findById(args.id);
+    return await contextValue.User.findById(args._id);
   },
   userByUserName: async (parent, args, contextValue) => {
     return await contextValue.User.find({ userName: args.userName });
@@ -16,14 +16,29 @@ const userQuery = {
     try {
       // const salt = bcrypt.genSaltSync(+process.env.SALT_ROUND);
       // const password = bcrypt.hashSync(args.password, salt);
-      console.log("Validation1...");
       const result = await contextValue.User.findOne({
         userName: args.userName,
       });
-      console.log("Validation2...");
+
+      console.log(
+        "validate",
+        result,
+        result.get("isLogin"),
+        result.isLogin,
+        result.password
+      );
 
       if (result) {
         if (bcrypt.compareSync(args.password, result.password)) {
+          await contextValue.User.findOneAndUpdate(
+            { userName: args.userName },
+            {
+              $set: {
+                isLogin: true,
+              },
+            }
+          );
+
           return jwt.sign(
             // result,
             {
@@ -31,6 +46,7 @@ const userQuery = {
               name: result.name,
               family: result.family,
               email: result.email,
+              role: result.role,
             },
             process.env.JWT_SECRET
           );

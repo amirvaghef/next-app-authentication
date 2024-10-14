@@ -43,9 +43,8 @@ const handler = startServerAndCreateNextHandler(server, {
     //   res.end();
     //   return false;
     // }
-    console.log("oprName", req.body.operationName);
-    const user = getUser(req.headers.authorization);
-    console.log("userName", user);
+    console.log("oprName", req.headers.get("authorization"));
+    const user = getUser(req.headers.get("authorization"));
     // if (res.getHeaders()) {
     //   console.log("2", user, res.getHeaders());
     //   res.setHeader("authorization", "user");

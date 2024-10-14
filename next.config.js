@@ -3,8 +3,13 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  webpack(config) {
+  webpack(config, { webpack }) {
     config.experiments = { ...config.experiments, topLevelAwait: true };
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        "globalThis.__DEV__": false,
+      })
+    );
     return config;
   },
 };

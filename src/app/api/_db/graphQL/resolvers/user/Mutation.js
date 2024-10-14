@@ -45,6 +45,28 @@ const userMutation = {
       }
     } else throw new Error("کاربر مجاز نمی باشد");
   },
+  logoff: async (parent, args, { models: contextValue, user }) => {
+    if (user) {
+      try {
+        console.log("logoff", args);
+        let res = await contextValue.User.findOneAndUpdate(
+          { userName: args.userName },
+          {
+            $set: {
+              isLogin: false,
+            },
+          }
+        );
+        console.log("logoff", res);
+
+        if (res) return true;
+        else return false;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    } else throw new Error("کاربر مجاز نمی باشد");
+  },
 };
 
 export default userMutation;

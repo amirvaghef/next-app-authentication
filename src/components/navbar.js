@@ -2,22 +2,27 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useDictionary, useUser } from "@/app/hooks";
+import { useDictionary, useUser } from "@/hooks";
+import { logoff } from "@/app/api/services/user.service";
 
 const Navbar = ({ lang }) => {
   let router = useRouter();
   let dictionary = useDictionary();
   let pathname = usePathname();
   let navHTML = <></>;
+  let user = useUser();
 
   const handleLogout = () => {
-    document.cookie = "token=; path=/; Max-Age=0";
-    document.cookie = "userName=; path=/; Max-Age=0";
-    // console.log(window.location);
+    logoff({ UserName: user.toString() }).then(({ data }) => {
+      if (data.logoff) {
+        document.cookie = "token=; path=/; Max-Age=0";
+        document.cookie = "userName=; path=/; Max-Age=0";
+      } else console.log(dictionary.common.error.problem);
 
-    router.refresh(); //push(window.location.pathname.toString());
+      router.refresh(); //push(window.location.pathname.toString());
+    });
   };
-  if (useUser())
+  if (user)
     navHTML = (
       <>
         <li>
