@@ -48,7 +48,6 @@ const userMutation = {
   logoff: async (parent, args, { models: contextValue, user }) => {
     if (user) {
       try {
-        console.log("logoff", args);
         let res = await contextValue.User.findOneAndUpdate(
           { userName: args.userName },
           {
@@ -57,7 +56,6 @@ const userMutation = {
             },
           }
         );
-        console.log("logoff", res);
 
         if (res) return true;
         else return false;

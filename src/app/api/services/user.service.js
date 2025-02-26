@@ -2,8 +2,16 @@
 import client from "./client";
 import * as gql from "./user.graphql";
 
-export const validation = async (data) =>
-  client.query({ query: gql.VALIDATE_USER, variables: data });
+export const validation = async (data, cookies) =>
+  client.query({
+    query: gql.VALIDATE_USER,
+    variables: data,
+    context: {
+      headers: {
+        cookies: cookies,
+      },
+    },
+  });
 
 export const logoff = async (data) =>
   client.mutate({ mutation: gql.LOGOFF, variables: data });

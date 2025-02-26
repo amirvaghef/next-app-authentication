@@ -59,7 +59,6 @@ export function middleware(request) {
   if (locale) {
     let response = NextResponse.next();
     response.cookies.set("Language", locale);
-    console.log("1", pathname);
     return response;
   }
 
@@ -70,10 +69,9 @@ export function middleware(request) {
       pathname.startsWith("/api/") ||
       pathname.startsWith("/_next")
   );
-  console.log("2", pathname);
+
   if (pathnameHasLocale) return;
 
-  console.log("3", pathname);
   // Redirect if there is no locale
   locale = getLocale(request);
   // console.log("middleware " + locale);

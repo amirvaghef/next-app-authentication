@@ -12,21 +12,13 @@ const userQuery = {
   userByUserName: async (parent, args, contextValue) => {
     return await contextValue.User.find({ userName: args.userName });
   },
-  validateUser: async (parent, args, { models: contextValue }) => {
+  validateUser: async (parent, args, { models: contextValue, req, res }) => {
     try {
       // const salt = bcrypt.genSaltSync(+process.env.SALT_ROUND);
       // const password = bcrypt.hashSync(args.password, salt);
       const result = await contextValue.User.findOne({
         userName: args.userName,
       });
-
-      console.log(
-        "validate",
-        result,
-        result.get("isLogin"),
-        result.isLogin,
-        result.password
-      );
 
       if (result) {
         if (bcrypt.compareSync(args.password, result.password)) {

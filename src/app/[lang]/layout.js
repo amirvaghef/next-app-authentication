@@ -1,9 +1,11 @@
 import dynamic from "next/dynamic";
 import { getDictionary } from "@/dictionaries";
 import { AppProvider } from "./app-provider";
+import { Suspense } from "react";
 import "./globals.css";
+import Loading from "./loading";
 
-const Navbar = dynamic(() => import("../../components/navbar.js"), {
+const Navbar = dynamic(() => import("@/components/navbar.js"), {
   ssr: false,
 });
 
@@ -23,8 +25,10 @@ export default async function RootLayout({ children, params }) {
     <html lang={params.lang} dir={params.lang === "fa" ? "rtl" : "ltr"}>
       <body>
         <AppProvider dictionary={dictionary}>
-          <Navbar lang={params.lang} />
-          {children}
+          <Suspense fallback={<Loading />}>
+            <Navbar lang={params.lang} />
+            {children}
+          </Suspense>
         </AppProvider>
       </body>
     </html>

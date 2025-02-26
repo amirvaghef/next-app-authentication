@@ -8,7 +8,6 @@ import db from "../_db/mongoDB.js";
 
 const getUser = (token) => {
   if (token) {
-    console.log("token", token);
     try {
       return jwt.verify(token, process.env.JWT_SECRET);
     } catch (error) {
@@ -17,7 +16,7 @@ const getUser = (token) => {
   }
 };
 
-console.log(process.env.NODE_ENV !== "production");
+const whiteList = ["ValidateUser"];
 
 const server = new ApolloServer({
   ...graphQLConfig,
@@ -25,7 +24,7 @@ const server = new ApolloServer({
 });
 const handler = startServerAndCreateNextHandler(server, {
   // path: "/api/graphql",
-  context: (req, res) => {
+  context: async (req, res) => {
     // res.setHeader("Access-Control-Allow-Credentials", "true");
     // res.setHeader(
     //   "Access-Control-Allow-Origin",
@@ -43,13 +42,15 @@ const handler = startServerAndCreateNextHandler(server, {
     //   res.end();
     //   return false;
     // }
-    console.log("oprName", req.headers.get("authorization"));
+    console.log("route", req.headers);
+
     const user = getUser(req.headers.get("authorization"));
+
     // if (res.getHeaders()) {
     //   console.log("2", user, res.getHeaders());
     //   res.setHeader("authorization", "user");
     // }
-    return { user, models };
+    return { user, models, req, res };
   },
 });
 
@@ -67,5 +68,7 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
+  // const data = JSON.parse(await request.clone().text()).operationName;
+  // console.log(data);
   return handler(request);
 }

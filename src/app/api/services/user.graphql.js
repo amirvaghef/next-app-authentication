@@ -1,8 +1,12 @@
 import { gql } from "@apollo/client";
 
 export const VALIDATE_USER = gql`
-  query ValidateUser($UserName: String!, $Password: String!) {
-    validateUser(userName: $UserName, password: $Password)
+  query ValidateUser(
+    $UserName: String!
+    $Password: String!
+    $Checked: Boolean!
+  ) {
+    validateUser(userName: $UserName, password: $Password, checked: $Checked)
   }
 `;
 
