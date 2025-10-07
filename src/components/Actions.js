@@ -1,6 +1,6 @@
 "use server";
 
-import { validation } from "@/app/api/services/user.service";
+import { validation } from "@/_db/services/user.service";
 import { cookies } from "next/headers";
 
 export const loginAction = async (formData) => {

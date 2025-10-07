@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // import { gql, useMutation } from "@apollo/client";
-import { register } from "@/app/api/services/user.service";
+import { register } from "@/_db/services/user.service";
 import { useDictionary } from "@/hooks";
 
 const Register = (props) => {

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useDictionary, useUser } from "@/hooks";
-import { logoff } from "@/app/api/services/user.service";
+import { logoff } from "@/_db/services/user.service";
 
 const Navbar = ({ lang }) => {
   let router = useRouter();
