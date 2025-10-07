@@ -25,16 +25,15 @@ export const loginAction = async (formData) => {
     let expire = new Date();
     if (checked) {
       expire.setTime(today.getTime() + 3600000 * 365 * 15);
-
       cookies().set("token", data.validateUser, {
         path: "/",
-        expires: expire.toUTCString(),
+        expires: expire,
       });
       // document.cookie =
       //   "token=" + token + ";path=/" + ";expires=" + expire.toUTCString();
       cookies().set("userName", userName, {
         path: "/",
-        expires: expire.toUTCString(),
+        expires: expire
       });
       // document.cookie =
       //   "userName=" +

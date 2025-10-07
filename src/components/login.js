@@ -3,10 +3,9 @@ import { getDictionary } from "@/dictionaries";
 import { loginAction } from "@/components/Actions";
 // import { cookies } from "next/headers";
 
-const Login = async (props) => {
-  console.log(props.lang);
-
-  const dict = await getDictionary(props.lang);
+const Login = async ({lang}) => {
+  const dict = await getDictionary(lang);
+  
 
   // const [errMsg, setErrMsg] = useState("");
   // const router = useRouter();

@@ -13,7 +13,11 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const cookieArr = headers.cookies; //decodeURIComponent(context.headers.cookies).split(";");
+  console.log("before cookies" + headers);
+  
+  const cookieArr = headers?.cookies; //decodeURIComponent(context.headers.cookies).split(";");
+  console.log(cookieArr);
+  
   const token = cookieArr?.find((item) => item.name === "token")?.value;
 
   // const token = cookieArr

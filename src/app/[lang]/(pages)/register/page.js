@@ -24,7 +24,10 @@ const Register = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    if (password === repPassword)
+      console.log("before success");
+    if (password === repPassword){
+      console.log("success");
+      
       register({
         user: {
           _id: "",
@@ -35,11 +38,12 @@ const Register = (props) => {
           email,
           role: null,
         },
-      }).then(({ data }) => {
+      }).then(( data ) => {
         console.log(data);
         setSuccessMsg(dict.register.message.success);
         setErrMsg("");
       });
+    }
     // registerUser({
     //   variables: {
     //     user: {

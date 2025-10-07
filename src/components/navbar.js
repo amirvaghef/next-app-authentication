@@ -11,6 +11,7 @@ const Navbar = ({ lang }) => {
   let pathname = usePathname();
   let navHTML = <></>;
   let user = useUser();
+  
 
   const handleLogout = () => {
     logoff({ UserName: user.toString() }).then(({ data }) => {

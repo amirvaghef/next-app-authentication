@@ -3,6 +3,8 @@ import {} from "dotenv/config";
 
 const userMutation = {
   newUser: async (parent, args, { models: contextValue }) => {
+    console.log("Inside graphql");
+    
     const salt = bcrypt.genSaltSync(+process.env.SALT_ROUND);
     const password = bcrypt.hashSync(args.user.password, salt);
     return await contextValue.User.create({

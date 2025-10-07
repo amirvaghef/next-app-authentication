@@ -20,6 +20,7 @@ export const metadata = {
 
 export default async function RootLayout({ children, params }) {
   const dictionary = await getDictionary(params.lang);
+  
 
   return (
     <html lang={params.lang} dir={params.lang === "fa" ? "rtl" : "ltr"}>
